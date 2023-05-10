@@ -1,2 +1,12 @@
-
-lucas---E-mail: lucasrodrigues2606@gmail.com---CPF: 027.554.580-62---Gênero: masculino
+-------------------------------------
+Nome: lucas
+E-mail: lucasPCZbaia@gmail.com
+CPF: 027.554.580-62
+Gênero: masculino
+-------------------------------------
+-------------------------------------
+Nome: py
+E-mail: lucasrodrigues2606@gmail.com
+CPF: 027.554.580-62
+Gênero: masculino
+-------------------------------------
