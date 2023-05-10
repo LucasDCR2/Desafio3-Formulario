@@ -1,8 +1,10 @@
 <?php
-$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-if (empty($dados['nome']) || empty($dados['email']) || empty($dados['cpf']) || empty($dados['genero'])) {
-    $retorna = ['status' => false, 'msg' => "Erro! Preencha todos os campos obrigatórios!"];
+
+$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);                                                        // Recebe os dados doformulário via POST e armazena em um array associativo
+
+if (empty($dados['nome']) || empty($dados['email']) || empty($dados['cpf']) || empty($dados['genero'])) {       // Verifica se as chaves do array estão vazias ou não foram definidas.
+    $retorna = ['status' => false, 'msg' => "Preencha todos os campos obrigatórios!"];
 
 } elseif (!filter_var($dados['email'], FILTER_VALIDATE_EMAIL)) {
     $retorna = ['status' => false, 'msg' => "Erro! Insira um email válido!"];
@@ -20,35 +22,14 @@ if (empty($dados['nome']) || empty($dados['email']) || empty($dados['cpf']) || e
                 '-------------------------------------'."\n";
 	// Salva a string no arquivo de texto
     file_put_contents('dados.txt', $conteudo, FILE_APPEND | LOCK_EX);
-    $retorna = ['status' => true, 'msg' => "Sucesso"];
+    $retorna = ['status' => true, 'msg' => "SUCESSO!"];
 	
 }
 
-echo json_encode($retorna); 
+// Retorna a resposta em formato JSON
+echo json_encode($retorna);
 
-/*// Recebe os dados do formulário
-$nome = $_POST['nome'];
-$email = $_POST['email'];
-$cpf = $_POST['cpf'];
-$genero = $_POST['genero'];
+?>
 
-// Valida os dados do formulário
-if (empty($nome) || empty($email) || empty($cpf) || empty($genero)) {
-    echo 'Por favor, preencha todos os campos.';
 
-} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo 'Por favor, informe um endereço de e-mail válido.';
 
-} elseif (!preg_match('/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/', $cpf)) {
-    echo 'Por favor, informe um CPF válido.';
-
-} else {
-    // Cria uma nova string com os dados do formulário
-    $newData = "Nome: $nome\nEmail: $email\nCPF: $cpf\nGênero: $genero\n\n";
-
-    // Salva a string no arquivo de texto
-    file_put_contents('data.txt', $newData, FILE_APPEND);
-
-    echo 'Dados enviados com sucesso!';
-}
-*/
